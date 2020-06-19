@@ -1,0 +1,42 @@
+Enabling RClone will allow the script to sync the local recording archive
+to Sharepoint once it has finished a download.
+
+This requires:
+- A SharePoint site to be created for the organization
+- A service account with write access to the site to be ready
+
+We are able to configure RClone to build a configuration file locally,
+treating the SharePoint site as a WebDAV destination, and then export
+that configuration to be used when the script is run.
+
+--
+
+To set up RClone:
+
+Download RClone for 64-bit Intel/AMD from https://rclone.org/downloads/
+(https://downloads.rclone.org/v1.52.0/rclone-v1.52.0-windows-amd64.zip)
+
+Extract the RClone archive to a folder called 'rclone' in the script directory.
+
+Now, in the terminal:
+
+$ cd path\to\script\folder
+
+$ .\rclone\rclone.exe config
+
+n) New Remote
+name> sharepoint
+Storage> 33
+url> https://{SharepointDomain}.sharepoint.com/sites/{SharepointSiteName}/Shared Documents/
+vendor> 3
+user> {service account}@domain.vic.edu.au
+y/g/n> y
+password: {service account password}
+bearer_token> [Enter]
+y/n> n
+y/e/d> y
+e/n/d/r/c/s/q> q
+
+$ .\rclone\rclone.exe config show > .\rclone.conf
+
+All done!

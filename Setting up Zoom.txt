@@ -1,0 +1,7 @@
+https://marketplace.zoom.us/develop/create
+
+Make a new JWT app.
+
+When setting the expiration time, click other and make the expiry time 6 months
+
+Copy the JWT token, API key and API secret into Zoom-Download.ps1
